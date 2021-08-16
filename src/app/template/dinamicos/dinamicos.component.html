@@ -10,7 +10,7 @@
             <input type="text"
                    class="form-control" 
                    required
-                   ngModel
+                   [ngModel]="persona.nombre"
                    name="nombre"
                    placeholder="Nombre de la persona">
                    
@@ -44,7 +44,11 @@
         <label class="col-sm-3 col-form-label">Favoritos</label>
         <div class="col-sm-9">
             <input type="text"
-                   class="form-control mb-1">
+                   *ngFor="let juego of persona.favoritos; let i = index"
+                   [ngModel]="juego.nombre"
+                   name="favorito_{{ i }}"
+                   class="form-control mb-1"
+                   required>
                    
         </div>
     </div>
@@ -61,3 +65,8 @@
         </div>
     </div>
 </form>
+
+
+
+<span>Persona</span>
+<pre>{{ persona | json }}</pre>
